@@ -19,7 +19,7 @@ pipeline {
 
         stage('Login And Push Image') {
             steps {
-                withAWS(credentials: 'aws-cred', region: 'us-east-2') {
+                withAWS(credentials: 'aws-cred', region: 'us-east-1') {
                     sh 'aws ecr get-login-password --region us-east-2 | docker login --username AWS --password-stdin 107327911397.dkr.ecr.us-east-2.amazonaws.com'
                     sh 'docker push 198309634927.dkr.ecr.us-east-1.amazonaws.com/verifyapp'
                     sh 'docker rmi 198309634927.dkr.ecr.us-east-1.amazonaws.com/verifyapp'
@@ -27,7 +27,7 @@ pipeline {
             }
         }
 
-        stage('Update the fargate service on UAT') {
+        stage('Update the fargate service') {
             steps {
                 withAWS(credentials: 'aws-cred', region: 'us-east-1') {
                     sh 'aws ecs update-service --cluster  verifyme --force-new-deployment --service verifyapp'
