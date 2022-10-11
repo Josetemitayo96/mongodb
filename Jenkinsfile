@@ -13,7 +13,7 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                sh 'docker build -t 198309634927.dkr.ecr.us-east-1.amazonaws.com/verifyapp.'
+                sh 'docker build -t 198309634927.dkr.ecr.us-east-1.amazonaws.com/verifyapp .'
             }
         }
 
