@@ -16,6 +16,7 @@ const options = {
 };
 
 const url = `mongodb://${MONGO_USERNAME}:${MONGO_PASSWORD}@${MONGO_HOSTNAME}:${MONGO_PORT}/${MONGO_DB}?authSource=admin`;
+// const url = `mongodb://ADMIN:test@3.235.141.152:27017/verifyme?authSource=admin`;
 
 mongoose.connect(url, options).then( function() {
   console.log('MongoDB is connected');
